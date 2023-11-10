@@ -31,7 +31,5 @@ const findUserByName = (tocoprzychodzidofunkcji) => {
 module.exports = {loadDb, saveDb, addRecord, findUserByName, findUserByUsername}
 
 // addRecord("usertestowy", "Michał", "Sperma")
-console.log(findUserByUsername("lubietakjaklubie"));
-console.log(findUserByName("Marek"));
 
 

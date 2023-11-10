@@ -3,12 +3,15 @@ const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const hbs = require('hbs');
 const {loadDb, addRecord, findUserByName, findUserByUsername} = require('./scripts.js')
 const app = express();
 const port = 9000
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*')
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, API-Key')
@@ -24,7 +27,8 @@ app.use((req, res, next) => {
 
 
 app.get('/',(req, res) => {
-    res.send('Hello World!')
+    res.render('home.hbs', {title: 'FRUN FESTIWAL', message:'Strona gówna festiwalu FRUN'});
+    res.status(200).send();
 })
 
 app.get('/getdb', (req, res) => {
